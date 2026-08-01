@@ -3,20 +3,15 @@
 来源： https://kamacoder.com/problempage.php?pid=1070
 
 算法：前缀和
-思路：
+思路： 创建一个前缀和数组，p[i]表示从0到i的和，那么区间[a,b]的和就是p[b]-p[a-1]，如果a=0，则直接返回p[b]
 
-时间复杂度：
-空间复杂度：
+时间复杂度： O(n) 预处理前缀和数组，O(1) 查询每个区间和
+空间复杂度： O(n)
 
-备注：
+备注： 注意读取数据的方式，尤其是大数据量的情况下，input()循环读取会很慢，建议使用 sys.stdin.read() 一次性读取所有数据，然后用指针控制进度。
 """
 
 
-# n = int(input()) 这种写法在笔试中同样受欢迎，且更易读
-# arr = [int(x) for x in input().split()] 或者 arr = list(map(int, input().split()))[:n] 也可以
-# 下面的写法本质上是把整个输入文件当作一个巨大的字符串流（Stream），然后通过一个指针（index）手动控制进度。
-# 这种方式在处理海量数据（比如 10^5 以上）时，比 input() 循环快得不止一点点。
-# 这种方法避免了多次调用 input() 产生的系统调用开销。在 Python 这种解释型语言里，减少系统调用次数是提速的关键
 #
 # import sys
 # input = sys.stdin.read # 这里没加 ()，因为你不是要现在就读数据，你只是想把 sys.stdin.read 这个“员工”改名叫 input
@@ -66,6 +61,7 @@
 # if __name__ == "__main__":
 #     main()
 
+import sys
 # 本地调试，改成普通的input()
 def main():
     n = int(input())
